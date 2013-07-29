@@ -3,7 +3,7 @@ Vagrant::Config.run do |config|
 
   config.vm.define :ubuntu do |ubuntu_config|
     ubuntu_config.vm.box = "ubuntu"
-    ubuntu_config.vm.box_url = "http://updates.sdesigns.com/vagrant/boxes/precise-server-cloudimg-vagrant-amd64-disk1.box"
+    ubuntu_config.vm.box_url = "http://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-vagrant-amd64-disk1.box"
 		# ubuntu_config.vm.boot_mode = :gui
 		ubuntu_config.vm.network :hostonly, "192.168.33.10"
 
@@ -25,7 +25,7 @@ Vagrant::Config.run do |config|
 
   config.vm.define :fedora do |fedora_config|
     fedora_config.vm.box = "fedora"
-
+    fedora_config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/fedora-18-x64-vbox4210.box"
 		# fedora_config.vm.boot_mode = :gui
 		fedora_config.vm.network :hostonly, "192.168.33.10"
 
