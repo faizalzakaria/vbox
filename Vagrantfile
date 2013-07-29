@@ -40,4 +40,22 @@ Vagrant::Config.run do |config|
 		fedora_config.vm.customize ["modifyvm", :id, "--memory", 1024]
 
   end
+
+  config.vm.define :ubuntu13 do |ubuntu13_config|
+    ubuntu13_config.vm.box = "ubuntu13"
+    ubuntu13_config.vm.box_url = "http://cloud-images.ubuntu.com/raring/current/raring-server-cloudimg-vagrant-amd64-disk1.box"
+		# ubuntu13_config.vm.boot_mode = :gui
+		ubuntu13_config.vm.network :hostonly, "192.168.33.10"
+
+		# Forward a port from the guest to the host, which allows for outside
+		# computers to access the VM, whereas host only networking does not.
+		ubuntu13_config.vm.forward_port 80, 8080
+		ubuntu13_config.vm.forward_port 22, 2222
+		ubuntu13_config.ssh.forward_agent = true
+
+        ubuntu13_config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
+
+		ubuntu13_config.vm.customize ["modifyvm", :id, "--memory", 1024]
+
+   end	
 end
